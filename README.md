@@ -1,35 +1,41 @@
-# 🧠 Taskly - Simple Task Manager App
+# 📝 Taskly 2.0 — Smart Task Manager (Spring Boot + MySQL)
 
-Welcome to **Taskly** – a fun and easy-to-use task manager built with **Spring Boot** and **Thymeleaf**.  
-You can add your daily tasks, set a due date and time, choose a priority, and stay organized – all from your browser!
-
----
-
-## ✨ What Can Taskly Do?
-
-- ✅ Add tasks with title and description
-- 📅 Set due date and time
-- 🚦 Choose task priority (Low, Medium, High)
-- 📂 Group tasks by category (like Work, Personal, etc.)
-- 🔍 Search tasks by title
-- 🎯 Filter tasks by completed status
-- 🗑️ Delete tasks you’ve finished or no longer need
+Taskly 2.0 is a **productivity-boosting task manager** built using **Spring Boot**, **MySQL**, **Thymeleaf**, and **TailwindCSS**.  
+It helps users organize their day efficiently with **priorities, categories, reminders, and even voice input support** 🎤.  
 
 ---
 
-## 🔧 Tech Used
+## 🚀 Features
 
-- 💻 Java 17
-- 🌱 Spring Boot
-- 📝 Thymeleaf (HTML templates)
-- 🛢️ Spring Data JPA + H2 Database
-- ⚙️ Lombok (to reduce boilerplate)
+✅ **User Authentication** — Secure registration & login using Spring Security  
+✅ **Task Management** — Add, edit, delete, and toggle tasks  
+✅ **Email Notifications** — Sends confirmation emails when a new task is created  
+✅ **Voice Recognition Input** — Quickly add tasks by speaking instead of typing  
+✅ **Task Categorization** — Filter by *Work*, *Personal*, or *Other*  
+✅ **Priority Levels** — High, Medium, or Low priorities for tasks  
+✅ **NLP-ready Architecture** — Hooks for future AI/NLP task processing  
+✅ **Beautiful UI** — Fully responsive interface using Tailwind CSS  
+✅ **MySQL Database Integration** — Persistent data storage  
 
 ---
 
-## ▶️ How to Run It
+## 🏗️ Tech Stack
 
-1. **Clone the project**
+| Layer | Technology |
+|--------|-------------|
+| **Backend** | Spring Boot 3.5, Spring MVC, Spring Security, Spring Data JPA |
+| **Frontend** | Thymeleaf + Tailwind CSS |
+| **Database** | MySQL |
+| **Build Tool** | Maven |
+| **Email Service** | Spring Boot Mail (SMTP) |
+| **Voice Feature** | JavaScript SpeechRecognition API |
+| **Hosting (optional)** | Render / Railway / AWS / Local Deployment |
+
+---
+
+## ⚙️ Project Setup (Local)
+
+### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/your-username/taskly.git
-cd taskly
+git clone https://github.com/Krishna8123/Taskly2.0.git
+cd Taskly2.0
