@@ -128,13 +128,19 @@ public class NLPService {
 
         return "Personal";
     }
-
     private String cleanTitle(String text) {
         return text
-                .replaceAll("(today|tomorrow|next\\s+\\w+|\\w+day)", "")
-                .replaceAll("(\\d{1,2})(?::\\d{2})?\\s?(am|pm)?", "")
+                // Remove date-related words
+                .replaceAll("\\b(today|tomorrow|next\\s+\\w+|\\w+day)\\b", "")
+                // Remove time-related patterns (e.g., 10am, 5:30 pm)
+                .replaceAll("\\b(\\d{1,2})(?::\\d{2})?\\s?(am|pm)?\\b", "")
+                // Remove connectors like "by", "at", "on", "after", "in"
+                .replaceAll("\\b(by|at|on|after|in)\\b", "")
+                // Clean extra spaces
+                .replaceAll("\\s+", " ")
                 .trim();
     }
+
 
     private String capitalize(String str) {
         if (str == null || str.isBlank()) return "";

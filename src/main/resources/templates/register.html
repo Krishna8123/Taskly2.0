@@ -21,9 +21,18 @@
     <hr class="border-gray-700 mb-6"/>
 
     <!-- Error Handling (Display if registration fails) -->
-    <div th:if="${param.error}" class="mb-4 p-3 bg-red-800/30 border border-red-600 rounded-lg text-red-300 text-sm">
-        <i class="fas fa-exclamation-circle mr-2"></i> Registration failed. Please check your details or try a different username.
+    <!-- ✅ Success Message -->
+    <div th:if="${success}" class="mb-4 p-3 bg-green-800/30 border border-green-600 rounded-lg text-green-300 text-sm">
+        <i class="fas fa-check-circle mr-2"></i>
+        <span th:text="${success}"></span>
     </div>
+
+    <!-- ❌ Error Message -->
+    <div th:if="${error}" class="mb-4 p-3 bg-red-800/30 border border-red-600 rounded-lg text-red-300 text-sm">
+        <i class="fas fa-exclamation-circle mr-2"></i>
+        <span th:text="${error}"></span>
+    </div>
+
 
     <!-- Registration Form -->
     <form th:action="@{/register}" method="post" class="space-y-5">
@@ -41,9 +50,9 @@
 
         <!-- Email Field (Optional but good practice) -->
         <div>
-            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email (Optional)</label>
+            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email </label>
             <div class="relative">
-                <input type="email" id="email" name="email"
+                <input type="email" id="email" name="email" required
                        class="w-full pl-10 pr-3 py-3 bg-[#1B2132] border border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-500"
                        placeholder="your.email@example.com">
                 <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
@@ -76,6 +85,13 @@
     </div>
 
 </div>
+
+<script th:if="${success}">
+    setTimeout(() => {
+        window.location.href = '/login';
+    }, 3000);
+</script>
+
 
 </body>
 </html>

@@ -139,9 +139,19 @@ public class TaskViewController {
         Task saved = taskService.createTask(task, user);
 
         // 📧 Send email confirmation
-        String dueDateStr = saved.getDueDate() != null
-                ? saved.getDueDate().format(java.time.format.DateTimeFormatter.ofPattern("dd MMM yyyy"))
-                : "No due date";
+        // Format due date and time together
+        String dueDateTimeStr;
+        if (saved.getDueDate() != null) {
+            if (saved.getDueTime() != null) {
+                dueDateTimeStr = saved.getDueDate().format(java.time.format.DateTimeFormatter.ofPattern("dd MMM yyyy"))
+                        + " at " + saved.getDueTime().format(java.time.format.DateTimeFormatter.ofPattern("hh:mm a"));
+            } else {
+                dueDateTimeStr = saved.getDueDate().format(java.time.format.DateTimeFormatter.ofPattern("dd MMM yyyy"));
+            }
+        } else {
+            dueDateTimeStr = "No due date";
+        }
+
 
         String priorityStr = saved.getPriority() != null ? saved.getPriority() : "Not specified";
         String categoryStr = saved.getCategory() != null ? saved.getCategory() : "Not specified";
@@ -153,7 +163,7 @@ public class TaskViewController {
         You’ve successfully added a new task to your Taskly dashboard!
 
         📌 Title: %s
-        🗓️ Due Date: %s
+        🗓️ Due: %s
         ⏰ Priority: %s
         🗂️ Category: %s
 
@@ -163,7 +173,7 @@ public class TaskViewController {
         """,
                 user.getUsername(),
                 saved.getTitle() != null ? saved.getTitle() : "Untitled Task",
-                dueDateStr,
+                dueDateTimeStr,
                 priorityStr,
                 categoryStr
         );

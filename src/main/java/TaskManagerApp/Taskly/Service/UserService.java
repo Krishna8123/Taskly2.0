@@ -21,11 +21,25 @@ public class UserService {
     }
 
     // Register a new user
-    public User registerUser(User user) {
+    /*public User registerUser(User user) {
         // Encode the password before saving
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
+    }*/
+    public boolean registerUser(String username, String password, String email) {
+        if (userRepository.existsByUsername(username)) return false;
+        if (email != null && userRepository.existsByEmail(email)) return false;
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(passwordEncoder.encode(password));
+        user.setEmail(email);
+        userRepository.save(user);
+
+        return true;
     }
+
+
 
     // Find user by username
     public Optional<User> findByUsername(String username) {
